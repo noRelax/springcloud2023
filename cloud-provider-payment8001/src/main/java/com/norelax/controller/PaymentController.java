@@ -3,7 +3,9 @@ package com.norelax.controller;
 import com.norelax.entities.Payment;
 import com.norelax.result.CommonResult;
 import com.norelax.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/payment")
+@Slf4j
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
+
+    @Value("${server.port}")
+    private String serverPort;
 
     /**
      * 查询数据
@@ -31,6 +37,7 @@ public class PaymentController {
     @GetMapping("/get/{id}")
     public ResponseEntity<CommonResult<Payment>> getById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getById(id);
+        log.info("查询结果：" + payment + "查询端口:" + serverPort);
         if (payment != null) {
             CommonResult<Payment> result = new CommonResult<Payment>(payment);
             return ResponseEntity.ok(result);
