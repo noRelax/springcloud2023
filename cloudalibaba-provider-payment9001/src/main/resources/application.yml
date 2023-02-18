@@ -2,11 +2,11 @@ server:
   port: 9001
 spring:
   application:
-    name: cloudalibaba-provider-payment9001
+    name: cloudalibaba-provider-payment
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.101.24:8848
+        server-addr: localhost:8848
 
 management:
   endpoint:
