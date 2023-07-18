@@ -95,8 +95,13 @@
                 <artifactId>mybatis-util</artifactId>
                 <version>2.0.0-SNAPSHOT</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2394531-release-1gFGWV</url>
+        </repository>
+    </distributionManagement>
 
 </project>
